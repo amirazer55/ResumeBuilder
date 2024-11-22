@@ -1,7 +1,6 @@
 import React from "react";
 import { Trash2Icon, MoreVerticalIcon, PlusIcon } from "lucide-react";
 import { useFormContext, useFieldArray } from "react-hook-form";
-import { Schema } from "zod";
 import {
   AlertDialog,
   AlertDialogTrigger,
@@ -35,6 +34,7 @@ import {
 import { cn } from "@/lib/utils";
 
 import { SectionProps } from "../../types";
+import { Schema } from "@/views/resume/utils/schemas";
 
 export function Skills(props: SectionProps) {
   const [openIndex, setOpenIndex] = React.useState<number | null>(null);

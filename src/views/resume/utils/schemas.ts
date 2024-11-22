@@ -10,20 +10,13 @@ const lenientDate = z
       }
       return true;
     },
-    {
-      message: "Invalid date",
-    }
+    { message: "Invalid date" }
   )
-  .transform((value) => {
-    if (typeof value === "string") {
-      return new Date(value);
-    }
-    return value;
-  });
+  .transform((value) => (typeof value === "string" ? new Date(value) : value));
 
 export const personalDetailsSchema = z.object({
   type: z.literal("personalDetails"),
-  title: z.string().default("Personal Details"),
+  title: z.literal("Personal Details").default("Personal Details"), // as const ensures exact match
   firstName: z.string(),
   lastName: z.string(),
   email: z.string(),
@@ -42,7 +35,7 @@ export const personalDetailsSchema = z.object({
 
 export const skillsSchema = z.object({
   type: z.literal("skills"),
-  title: z.string().default("Skills"),
+  title: z.literal("Skills").default("Skills"),
   skills: z.array(
     z.object({
       name: z.string(),
@@ -59,7 +52,7 @@ export const skillsSchema = z.object({
 
 export const educationsSchema = z.object({
   type: z.literal("educations"),
-  title: z.string().default("Education"),
+  title: z.literal("Education").default("Education"),
   educations: z.array(
     z
       .object({
@@ -82,7 +75,7 @@ export const educationsSchema = z.object({
 
 export const employmentHistorySchema = z.object({
   type: z.literal("employmentHistory"),
-  title: z.string().default("Employment History"),
+  title: z.literal("Employment History").default("Employment History"),
   employments: z.array(
     z
       .object({
@@ -105,7 +98,7 @@ export const employmentHistorySchema = z.object({
 
 export const languagesSchema = z.object({
   type: z.literal("languages"),
-  title: z.string().default("Languages"),
+  title: z.literal("Languages").default("Languages"),
   languages: z.array(
     z.object({
       name: z.string(),
@@ -127,9 +120,8 @@ export const schema = z.object({
   settings: z.object({
     fontFamily: z
       .enum(["courier", "helvetica", "times-roman"])
-      .optional()
       .default("courier"),
-    fontSize: z.enum(["10", "12", "14"]).optional().default("12"),
+    fontSize: z.enum(["10", "12", "14"]).default("12"),
   }),
 });
 

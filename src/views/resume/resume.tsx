@@ -1,4 +1,3 @@
-import React from "react";
 import { DownloadIcon, FileTextIcon, Settings2Icon, XIcon } from "lucide-react";
 import { PDFDownloadLink } from "@react-pdf/renderer";
 import { PDFPreview } from "@/components/shared/pdf-preview";

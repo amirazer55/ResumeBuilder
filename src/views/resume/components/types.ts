@@ -5,6 +5,7 @@ import { FONT_SIZE_MAP } from "../constants/fonts";
 export type SectionProps = {
   index: number;
   remove: UseFieldArrayRemove;
+  methods: UseFormReturn<Schema>;
 };
 
 export type TemplateProps = {

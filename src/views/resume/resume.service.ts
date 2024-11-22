@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 import { debounce } from "lodash";
 import { useBreakpoint } from "@/lib/utils";
@@ -31,7 +31,7 @@ const defaultValues: Schema = {
       skills: [],
     },
     {
-      title: "Educations",
+      title: "Education",
       type: "educations",
       educations: [],
     },
@@ -53,16 +53,18 @@ export const useResumeService = () => {
   const isLargeScreen = useBreakpoint("lg");
 
   const createDefaultValues = useMemo(() => {
-    let result = null;
-
     try {
-      result = schema.parse(JSON.parse(localStorage.getItem("resume") || ""));
+      const savedData = localStorage.getItem("resume");
+      if (savedData) {
+        return schema.parse(JSON.parse(savedData));
+      }
     } catch (error) {
-      console.error({ error });
-      result = defaultValues;
+      console.warn(
+        "Failed to parse saved resume data. Falling back to defaults.",
+        error
+      );
     }
-
-    return result;
+    return defaultValues; // Fallback to default values
   }, []);
 
   const methods = useForm<Schema>({
@@ -81,6 +83,12 @@ export const useResumeService = () => {
   useEffect(() => {
     autoSave.current(formData);
   }, [formData]);
+
+  useEffect(() => {
+    return () => {
+      autoSave.current.cancel(); // Cleanup debounce on unmount
+    };
+  }, []);
 
   return {
     showPreview,
