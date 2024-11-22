@@ -1,31 +1,5 @@
 import React from "react";
 import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
-import { Collapsible } from "@/components/ui/collapsible";
-import {
-  CollapsibleContent,
-  CollapsibleTrigger,
-} from "@/components/ui/collapsible";
-import {
-  Dialog,
-  DialogTrigger,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-  DialogFooter,
-} from "@/components/ui/dialog";
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
-
-import {
   UseFieldArrayRemove,
   UseFormReturn,
   useFieldArray,
@@ -39,14 +13,21 @@ import {
   PlusIcon,
   Trash2Icon,
 } from "lucide-react";
-import { cn } from "@/lib/utils";
 import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+  Button,
+  Collapsible,
+  CollapsibleContent,
+  CollapsibleTrigger,
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import {
   AlertDialog,
   AlertDialogAction,
   AlertDialogCancel,
@@ -56,20 +37,30 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
   AlertDialogTrigger,
-} from "@/components/ui/alert-dialog";
-import { TextEditor } from "@/components/ui/text-editor";
-import { DatePicker } from "@/components/ui/date-picker";
-import { MonthPicker } from "@/components/ui/month-picker";
-import { format } from "date-fns";
-import {
+  TextEditor,
+  DatePicker,
+  MonthPicker,
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select";
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+  Input,
+  RadioGroup,
+  RadioGroupItem,
+} from "@/components/ui";
+import { format } from "date-fns";
+
+import { cn } from "@/lib/utils";
+
 import { Schema } from "../_utils/schemas";
-import { ImportJSON } from "./import-json";
 
 const SECTIONS = {
   personalDetails: PersonalDetails,

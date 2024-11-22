@@ -1,50 +1,34 @@
 import React from "react";
-import {
-  DownloadIcon,
-  FileJsonIcon,
-  FileTextIcon,
-  MoreVerticalIcon,
-  Settings2Icon,
-  XIcon,
-} from "lucide-react";
+import { DownloadIcon, FileTextIcon, Settings2Icon, XIcon } from "lucide-react";
 import { useForm } from "react-hook-form";
 import { debounce } from "lodash";
 import { useBreakpoint } from "@/lib/utils";
 import { PDFPreview } from "@/components/shared/pdf-preview";
-import { Button } from "@/components/ui/button";
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { PDFDownloadLink } from "@react-pdf/renderer";
+
 import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogFooter,
   DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "@/components/ui/dialog";
-import {
   Form,
   FormControl,
   FormField,
   FormItem,
   FormLabel,
   FormMessage,
-} from "@/components/ui/form";
-import {
+  DialogFooter,
+  Dialog,
+  DialogTrigger,
+  DialogContent,
+  DialogTitle,
+  DialogDescription,
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
+  Button,
+} from "@/components/ui";
 import ResumeForm from "./_components/resume-form";
 import { Template } from "./_components/template";
 import { schema, Schema } from "./_utils/schemas";
@@ -94,23 +78,6 @@ const defaultValues: Schema = {
 export function Resume() {
   const [showPreview, setShowPreview] = React.useState(false);
   const [showSettings, setShowSettings] = React.useState(false);
-
-  function exportJSON() {
-    const blob = new Blob([JSON.stringify(formData, null, 2)], {
-      type: "application/json",
-    });
-    const url = URL.createObjectURL(blob);
-
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = "resume.json";
-
-    document.body.appendChild(a);
-    a.click();
-
-    document.body.removeChild(a);
-    URL.revokeObjectURL(url);
-  }
 
   const isLargeScreen = useBreakpoint("lg");
 
@@ -173,18 +140,6 @@ export function Resume() {
                     <DownloadIcon className="w-4 h-4 mr-2" /> Download PDF
                   </Button>
                 </PDFDownloadLink>
-                <DropdownMenu>
-                  <DropdownMenuTrigger asChild>
-                    <Button size="icon">
-                      <MoreVerticalIcon className="w-4 h-4" />
-                    </Button>
-                  </DropdownMenuTrigger>
-                  <DropdownMenuContent>
-                    <DropdownMenuItem onClick={exportJSON}>
-                      <FileJsonIcon className="w-4 h-4 mr-2" /> Export JSON
-                    </DropdownMenuItem>
-                  </DropdownMenuContent>
-                </DropdownMenu>
               </div>
             </div>
             <Button onClick={() => setShowPreview(false)} size="icon">
@@ -280,18 +235,6 @@ export function Resume() {
                     <DownloadIcon className="w-4 h-4 mr-2" /> Download PDF
                   </Button>
                 </PDFDownloadLink>
-                <DropdownMenu>
-                  <DropdownMenuTrigger asChild>
-                    <Button size="icon">
-                      <MoreVerticalIcon className="w-4 h-4" />
-                    </Button>
-                  </DropdownMenuTrigger>
-                  <DropdownMenuContent>
-                    <DropdownMenuItem onClick={exportJSON}>
-                      <FileJsonIcon className="w-4 h-4 mr-2" /> Export JSON
-                    </DropdownMenuItem>
-                  </DropdownMenuContent>
-                </DropdownMenu>
               </div>
             </div>
             <PDFPreview>
