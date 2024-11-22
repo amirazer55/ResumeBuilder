@@ -1,5 +1,5 @@
 import { UseFieldArrayRemove, UseFormReturn } from "react-hook-form";
-import { Schema } from "../_utils/schemas";
+import { Schema } from "../utils/schemas";
 import { FONT_SIZE_MAP } from "../constants/fonts";
 
 export type SectionProps = {
@@ -16,5 +16,5 @@ export type SkillLevelProps = {
 };
 
 export type ResumeFormProps = {
-    methods: UseFormReturn<Schema>;
-  };
+  methods: UseFormReturn<Schema>;
+};

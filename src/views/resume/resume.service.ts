@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import { debounce } from "lodash";
 import { useBreakpoint } from "@/lib/utils";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { schema, Schema } from "./_utils/schemas";
+import { schema, Schema } from "./utils/schemas";
 
 const defaultValues: Schema = {
   sections: [

@@ -25,8 +25,8 @@ import {
   Button,
 } from "@/components/ui";
 
-import ResumeForm from "./_components/resume-form";
-import { Template } from "./_components/template";
+import ResumeForm from "./components/resume-form";
+import { Template } from "./components/template";
 import { useResumeService } from "./resume.service";
 
 export function Resume() {

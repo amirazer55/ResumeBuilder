@@ -4,7 +4,7 @@ import "./index.css";
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
-import { Resume } from "./routes/resume/resume";
+import { Resume } from "./views/resume/resume";
 
 const router = createBrowserRouter(
   [
