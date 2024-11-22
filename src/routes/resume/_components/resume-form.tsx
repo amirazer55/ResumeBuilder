@@ -1200,9 +1200,6 @@ export default function ResumeForm(props: ResumeFormProps) {
 
   return (
     <div className="px-6 py-8 sm:px-12 flex flex-col">
-      <div className="justify-end flex gap-2">
-        <ImportJSON />
-      </div>
       <Form {...methods}>
         <form className="flex flex-col gap-12">
           {fields.map((field, index) => {

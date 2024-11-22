@@ -9,7 +9,6 @@
 - **Dynamic Form Builder**: Add personal details, skills, education, and work history.
 - **Real-Time Preview**: Instantly preview your resume with real-time updates.
 - **PDF Export**: Download your resume in a professionally formatted PDF file.
-- **JSON Export**: Export your resume data in JSON format for reuse.
 - **Customization Options**: Adjust fonts, sizes, and styles to suit your needs.
 - **Auto-Save**: Automatically saves progress to local storage.
 - **Responsive Design**: Optimized for desktop and mobile devices.
