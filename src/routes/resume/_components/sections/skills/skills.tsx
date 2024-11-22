@@ -34,7 +34,7 @@ import {
 } from "@/components/ui";
 import { cn } from "@/lib/utils";
 
-import { SectionProps } from "../types";
+import { SectionProps } from "../../types";
 
 export function Skills(props: SectionProps) {
   const [openIndex, setOpenIndex] = React.useState<number | null>(null);

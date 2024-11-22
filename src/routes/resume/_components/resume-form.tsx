@@ -1,4 +1,4 @@
-import { UseFormReturn, useFieldArray } from "react-hook-form";
+import { useFieldArray } from "react-hook-form";
 import { GlobeIcon, PencilRulerIcon } from "lucide-react";
 import { Form, Button } from "@/components/ui";
 
@@ -7,10 +7,10 @@ import {
   Skills,
   Educations,
   EmploymentHistory,
-  Languages
+  Languages,
 } from "./sections";
 
-import { Schema } from "../_utils/schemas";
+import { ResumeFormProps } from "./types";
 
 const SECTIONS = {
   personalDetails: PersonalDetails,
@@ -18,9 +18,6 @@ const SECTIONS = {
   educations: Educations,
   employmentHistory: EmploymentHistory,
   languages: Languages,
-};
-type ResumeFormProps = {
-  methods: UseFormReturn<Schema>;
 };
 
 export default function ResumeForm(props: ResumeFormProps) {
