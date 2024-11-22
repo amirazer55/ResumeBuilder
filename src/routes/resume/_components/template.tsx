@@ -1,7 +1,7 @@
-import { Page, Text, View, Document, StyleSheet } from "@react-pdf/renderer";
+import React from "react";
 import { Html } from "react-pdf-html";
 import { format } from "date-fns";
-import React from "react";
+import { Page, Text, View, Document, StyleSheet } from "@react-pdf/renderer";
 import { Schema } from "../_utils/schemas";
 
 const FONT_FAMILY_MAP = {
