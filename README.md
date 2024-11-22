@@ -31,14 +31,11 @@
 
 ## Installation
 
-Follow these steps to set up the project locally:
+You can run the app either locally or through Docker.
 
-### Prerequisites
+### Run Locally
 
-- **Node.js** (v16 or higher)
-- **npm** (or yarn)
-
-### Steps
+#### Steps
 
 1. **Clone the repository**:
    ```bash
@@ -60,6 +57,31 @@ Follow these steps to set up the project locally:
 
 ---
 
+### Run with Docker
+
+
+#### Steps
+
+1. **Clone the repository**:
+   ```bash
+   git clone https://github.com/your-username/resume-builder.git
+   cd resume-builder
+   ```
+
+2. **Build the Docker image**:
+   ```bash
+   docker build -t resume-builder .
+   ```
+
+3. **Run the container**:
+   ```bash
+   docker run -p 5173:5173 resume-builder
+   ```
+
+4. Open the app in your browser at [http://localhost:5173](http://localhost:5173).
+
+---
+
 ## Scripts
 
 - **Start Development Server**:
@@ -67,39 +89,6 @@ Follow these steps to set up the project locally:
   npm run dev
   ```
 
-- **Build for Production**:
-  ```bash
-  npm run build
-  ```
-
-- **Preview Production Build**:
-  ```bash
-  npm run preview
-  ```
-
-- **Lint Code**:
-  ```bash
-  npm run lint
-  ```
-
----
-
-## Project Structure
-
-The project is structured as follows:
-
-```plaintext
-src/
-├── _components/       # Reusable components like form and template
-├── _utils/            # Utility files, schemas, and constants
-├── shared/            # Shared components (e.g., PDF Preview)
-├── Resume.tsx         # Main Resume component
-├── Resume.service.ts  # Logic for managing state and form actions
-├── main.tsx           # Entry point
-└── styles/            # Global and component-specific styles
-```
-
----
 
 ## Usage
 
@@ -114,7 +103,6 @@ src/
 
 4. **Export**:
    - Download your resume as a PDF using the "Download PDF" button.
-   - Export your data as JSON for reuse.
 
 5. **Save Progress**:
    Your progress is automatically saved in local storage.
@@ -130,7 +118,7 @@ The app uses the following dependencies for development and production:
 - TailwindCSS for styling
 - React Hook Form and Zod for form handling and validation
 - @react-pdf/renderer for PDF generation
-- lodash for utility functions
+- shadcn-ui
 
 ### Development Dependencies
 - Vite for development and build
