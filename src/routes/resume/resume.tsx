@@ -1,12 +1,7 @@
 import React from "react";
 import { DownloadIcon, FileTextIcon, Settings2Icon, XIcon } from "lucide-react";
-import { useForm } from "react-hook-form";
-import { debounce } from "lodash";
-import { useBreakpoint } from "@/lib/utils";
-import { zodResolver } from "@hookform/resolvers/zod";
 import { PDFDownloadLink } from "@react-pdf/renderer";
 import { PDFPreview } from "@/components/shared/pdf-preview";
-
 
 import {
   DialogHeader,
@@ -29,87 +24,21 @@ import {
   SelectValue,
   Button,
 } from "@/components/ui";
+
 import ResumeForm from "./_components/resume-form";
 import { Template } from "./_components/template";
-import { schema, Schema } from "./_utils/schemas";
-
-const defaultValues: Schema = {
-  sections: [
-    {
-      title: "Personal Details",
-      type: "personalDetails",
-      firstName: "",
-      lastName: "",
-      city: "",
-      country: "",
-      postalCode: "",
-      drivingLicense: "",
-      dateOfBirth: null,
-      placeOfBirth: "",
-      nationality: "",
-      address: "",
-      email: "",
-      phone: "",
-      summary: "",
-      wantedJobTitle: "",
-    },
-    {
-      title: "Skills",
-      type: "skills",
-      skills: [],
-    },
-    {
-      title: "Educations",
-      type: "educations",
-      educations: [],
-    },
-    {
-      title: "Employment History",
-      type: "employmentHistory",
-      employments: [],
-    },
-  ],
-  settings: {
-    fontFamily: "courier",
-    fontSize: "12",
-  },
-};
+import { useResumeService } from "./resume.service";
 
 export function Resume() {
-  const [showPreview, setShowPreview] = React.useState(false);
-  const [showSettings, setShowSettings] = React.useState(false);
-
-  const isLargeScreen = useBreakpoint("lg");
-
-  const createDefaultValues = React.useMemo(() => {
-    let result = null;
-
-    try {
-      result = schema.parse(JSON.parse(localStorage.getItem("resume") || ""));
-    } catch (error) {
-      console.log({ error });
-      result = defaultValues;
-    }
-
-    return result;
-  }, []);
-
-  const methods = useForm<Schema>({
-    resolver: zodResolver(schema),
-    defaultValues: createDefaultValues,
-  });
-
-  const formData = methods.watch();
-
-  const autoSave = React.useRef(
-    debounce((data: Schema) => {
-      localStorage.setItem("resume", JSON.stringify(data));
-    }, 1000)
-  );
-
-  React.useEffect(() => {
-    autoSave.current(formData);
-  }, [formData, autoSave]);
+  const {
+    showPreview,
+    setShowPreview,
+    showSettings,
+    setShowSettings,
+    isLargeScreen,
+    methods,
+    formData,
+  } = useResumeService();
 
   return (
     <div className="flex flex-col lg:flex-row h-screen">
